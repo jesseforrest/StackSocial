@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: stacksocial_production
-#  username: name
-#  password: my_db_password
-  host: localhost
+  database: dc7ogsb28bhs4a
+  username: ahibjjzpoubhyz
+  password: Ipgx2hDGCNzgSrLDE4RuCmnmiu
+  host: ec2-54-235-152-226.compute-1.amazonaws.com
