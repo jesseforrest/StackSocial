@@ -4,6 +4,10 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+# Use Devise (based off of Warden) for login and authentication
+gem 'devise', '3.0.0.rc'
+gem 'protected_attributes'
+
 # Use postgres as the database for Active Record
 gem 'pg'
 
