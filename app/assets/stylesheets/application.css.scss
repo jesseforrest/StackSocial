@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+.navbar {
+	text-align: right;
+	font-size: 16px;
+}
+
+.navbar .container {
+	margin-top: 10px;
+}
+
+h1 {
+	text-align: center;
+}
