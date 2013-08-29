@@ -8,6 +8,10 @@ gem 'rails', '4.0.0'
 gem 'devise', '3.0.0.rc'
 gem 'protected_attributes'
 
+# Use omniauth for authorization
+gem "omniauth"
+gem "omniauth-twitter"
+
 # Use postgres as the database for Active Record
 gem 'pg'
 
