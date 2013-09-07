@@ -1,0 +1,25 @@
+<h1 id="welcome_heading">Overview</h1>
+
+<% if !@authentication %>
+	<a href="/auth/twitter" class="btn">Login to Twitter</a>
+<% else %>
+	<div>Hashtag Search: </div>
+	<%= form_tag("/overview", method: "post") do %>
+		<input type="text"
+			id="search_term"
+			name="search_term"
+			value="<%= h @search_term %>"/>
+		<div>
+			<input type="submit" 
+				id="search_button"
+				class="btn"
+				value="Search"/>
+		</div>
+	<% end %>
+	<div id="search_results">
+		<% @results.map do |status| %>
+		   <%= h "#{status.from_user}: #{status.text}" %><br />
+		<% end %>
+	</div>
+
+<% end %>

@@ -15,7 +15,7 @@
 $(document).ready(function() {
    // If welcome page
    if ($("#welcome_heading").length > 0) {
-      $("#welcome_heading").fadeIn(3000);
-      $(".twitter_timeline_container").fadeIn(3000);
+      $("#welcome_heading").fadeIn(2000);
+      $(".twitter_timeline_container").fadeIn(2000);
    }
 });

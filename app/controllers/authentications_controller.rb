@@ -1,5 +1,7 @@
 class AuthenticationsController < ApplicationController
-  protected
+
+  require 'omniauth-twitter'
+  require 'omniauth'
 
   # This is necessary since Rails 3.0.4
   # See https://github.com/intridea/omniauth/issues/185
@@ -14,7 +16,9 @@ class AuthenticationsController < ApplicationController
 
  def create
   omniauth = request.env["omniauth.auth"]
+  session[:omniauth] = omniauth.except('extra')
   authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+
   if authentication
     flash[:notice] = "Signed in successfully."
     sign_in_and_redirect(:user, authentication.user)
@@ -29,7 +33,6 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, user)
     else
-      session[:omniauth] = omniauth.except('extra')
       redirect_to new_user_registration_url
     end
   end

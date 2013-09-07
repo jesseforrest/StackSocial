@@ -8,7 +8,11 @@ gem 'rails', '4.0.0'
 gem 'devise', '3.0.0.rc'
 gem 'protected_attributes'
 
+# Twitter library used for twitter integration
+gem "twitter"
+
 # Use omniauth for authorization
+#gem "omniauth"
 gem "omniauth"
 gem "omniauth-twitter"
 
