@@ -11,13 +11,10 @@ class OverviewController < ApplicationController
   	@results = nil;
   	@search_term = "StackSocial"
   	if !omniauth.nil?
-  		#@authentications = current_user.authentications;
   		@authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-	  	logger.debug "omni access token" + omniauth.credentials.token
-	  	logger.debug "omni access secret" + omniauth.credentials.secret
 	  	Twitter.configure do |config|
-			  config.consumer_key = 'edLsNlqzeEfHWuQ7EB1GA'
-			  config.consumer_secret = 'EeRyCvwyb3bBOkraf6pblZrM7Tm6vpCGXT90u5O7VmU'
+			  config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+			  config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
 			  config.oauth_token = omniauth.credentials.token
 			  config.oauth_token_secret = omniauth.credentials.secret
 			end
