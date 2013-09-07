@@ -1,0 +1,22 @@
+<h1><%= h @handle %></h1>
+
+<div class="text-center">
+	<a href="/overview" class="btn">Back to Overview Page</a>
+</div>
+
+<div id="search_results">
+	<% @results.map do |status| %>
+		<div class="well tweet">
+			<img src="<%= status.profile_image_url %>" 
+				class="img-circle pull-left" />
+			<div class="lead">
+				<%= h "#{status.text}" %>
+			</div>
+			<div class="muted text-right">
+				<%= (status.created_at).to_datetime.strftime("%m/%d/%Y at %I:%M%p") %>
+			</div>
+	   </div>
+	<% end %>
+</div>
+
+

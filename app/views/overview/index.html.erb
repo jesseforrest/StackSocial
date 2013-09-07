@@ -1,24 +1,44 @@
-<h1 id="welcome_heading">Overview</h1>
+<h1>Overview</h1>
 
 <% if !@authentication %>
-	<a href="/auth/twitter" class="btn">Login to Twitter</a>
+	<div class="text-center">
+		<a href="/auth/twitter" class="btn btn-large">Login to Twitter</a>
+	</div>
 <% else %>
-	<div>Hashtag Search: </div>
-	<%= form_tag("/overview", method: "post") do %>
-		<input type="text"
-			id="search_term"
-			name="search_term"
-			value="<%= h @search_term %>"/>
-		<div>
-			<input type="submit" 
-				id="search_button"
-				class="btn"
-				value="Search"/>
-		</div>
-	<% end %>
+	<div class="search_box">
+		<h3>Hashtag Search: </h3>
+		<%= form_tag("/overview", method: "post") do %>
+			<div class="input-prepend">
+				<span class="add-on">#</span>
+				<input type="text"
+					class="span2"
+					id="search_term"
+					name="search_term"
+					value="<%= h @search_term %>"/>
+			</div>
+			<div>
+				<input type="submit" 
+					id="search_button"
+					class="btn btn-large btn-primary"
+					value="Search"/>
+			</div>
+		<% end %>
+	</div>
 	<div id="search_results">
 		<% @results.map do |status| %>
-		   <%= h "#{status.from_user}: #{status.text}" %><br />
+			<div class="well tweet">
+				<img src="<%= status.profile_image_url %>" 
+					class="img-circle pull-left" />
+				<a href="/twitter/user/<%= h "#{status.from_user}" %>"
+					class="btn pull-right"
+					title="View <%= h "#{status.from_user}" %> Twitter posts"><%= h "#{status.from_user}" %></a>
+				<div class="lead">
+					<%= h "#{status.text}" %>
+				</div>
+				<div class="muted text-right">
+					<%= (status.created_at).to_datetime.strftime("%m/%d/%Y at %I:%M%p") %>
+				</div>
+		   </div>
 		<% end %>
 	</div>
 
