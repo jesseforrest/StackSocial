@@ -22,7 +22,9 @@ class OverviewController < ApplicationController
 			  config.oauth_token_secret = omniauth.credentials.secret
 			end
 
-			@search_term = params[:search_term] if params[:search_term] != ""
+			if params[:search_term] && params[:search_term].strip != ""
+				@search_term = params[:search_term].strip
+			end
 			@results = Twitter.search("#" + @search_term + " -rt", :count => 20).results
 	  end	
   end
